@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>香香的心愿本 · 写给臭臭</title>
+<meta name="description" content="想让臭臭做的事、想让你改的小毛病、想吃的东西、想要的礼物、想说的话，都收在这里。" />
+<meta name="theme-color" content="#FBF7F1" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/style.css?v=4" />
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="回到顶部">
+    <span class="brand-faces" aria-hidden="true">
+      <img src="assets/img/face-yier.png" alt="" width="34" height="34" />
+      <img src="assets/img/face-bubu.png" alt="" width="34" height="34" />
+    </span>
+    <span class="brand-text">
+      <strong>香香的心愿本</strong>
+      <small>写给臭臭 · 慢慢写</small>
+    </span>
+  </a>
+  <nav class="topnav" aria-label="页面导航">
+    <a href="#wishform">写一条</a>
+    <a href="#board">心愿墙</a>
+    <button type="button" class="nav-btn" id="randomTop">抽一条</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ hero ============ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="eyebrow-rule"></span>FOR CHOUCHOU · FROM XIANGXIANG</p>
+      <h1>
+        臭臭，<br />
+        这些小事<br />
+        想和你一起<em>慢慢做<svg class="squiggle" viewBox="0 0 240 18" aria-hidden="true" preserveAspectRatio="none">
+            <path d="M3 12 C 48 3, 92 16, 136 8 S 214 6, 237 11" />
+          </svg></em>
+      </h1>
+      <p class="lede">
+        想让臭臭做的事、想让你改的小毛病、突然想吃的东西、想要的小礼物，还有那些不好意思当面说的话——
+        都先放在这里。不着急，一件一件来。
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#wishform">
+          写下一条心愿
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
+        </a>
+        <button type="button" class="btn btn-soft" id="randomHero">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-9.6A4.4 4.4 0 0 1 12 8a4.4 4.4 0 0 1 7.5 2.9c0 5.2-7.5 9.6-7.5 9.6Z"/></svg>
+          陪我抽一条
+        </button>
+      </div>
+
+      <div class="hero-stats">
+        <dl class="stats">
+          <div><dt>记下的</dt><dd id="statTotal">0</dd></div>
+          <div><dt>已实现</dt><dd id="statDone">0</dd></div>
+          <div><dt>还等着</dt><dd id="statLeft">0</dd></div>
+        </dl>
+        <div class="progress" role="img" aria-label="实现进度">
+          <span id="progressBar"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="frame">
+        <span class="tape tape-a" aria-hidden="true"></span>
+        <span class="tape tape-b" aria-hidden="true"></span>
+        <div class="frame-photo">
+          <span class="dot dot-a" aria-hidden="true">♡</span>
+          <span class="dot dot-b" aria-hidden="true">✿</span>
+          <span class="dot dot-c" aria-hidden="true">♡</span>
+          <img src="assets/img/duo.png" alt="棕色小熊布布靠着白色小熊一二" />
+        </div>
+        <div class="frame-cap">
+          <span class="who bubu"><i></i>布布 · 臭臭</span>
+          <span class="cap-heart" aria-hidden="true">♡</span>
+          <span class="who yier"><i></i>一二 · 香香</span>
+        </div>
+      </div>
+      <p class="hand-note">“我都记着呢。”<span>—— 臭臭</span></p>
+    </div>
+  </section>
+
+  <!-- ============ marquee ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>想让臭臭做的事 <i>✿</i></span><span>想让你改的小毛病 <i>✿</i></span><span>想吃的东西 <i>✿</i></span><span>想要的小礼物 <i>✿</i></span><span>想说的话 <i>✿</i></span>
+      <span>想让臭臭做的事 <i>✿</i></span><span>想让你改的小毛病 <i>✿</i></span><span>想吃的东西 <i>✿</i></span><span>想要的小礼物 <i>✿</i></span><span>想说的话 <i>✿</i></span>
+    </div>
+  </div>
+
+  <!-- ============ compose ============ -->
+  <section class="compose" id="wishform">
+    <div class="compose-card">
+      <header class="compose-head">
+        <p class="eyebrow"><span class="eyebrow-rule"></span>ONE MORE WISH</p>
+        <h2>今天想跟臭臭说点什么？</h2>
+        <p class="compose-sub">先挑一个抽屉，再写具体一点——臭臭才知道从哪儿开始呀。</p>
+      </header>
+
+      <div class="cat-picker" id="catPicker" role="radiogroup" aria-label="心愿类别"></div>
+
+      <div class="textarea-wrap">
+        <textarea id="wishInput" rows="3" maxlength="120" placeholder="比如：周末陪我去江边走走，把手机放口袋里。" aria-label="心愿内容"></textarea>
+        <span class="counter" id="charCount">0 / 120</span>
+      </div>
+
+      <div class="compose-foot">
+        <p class="hint">按 / 快速开始 · Ctrl / Cmd + Enter 也能收起</p>
+        <button type="button" class="btn btn-primary" id="addWish">
+          收进本子
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <aside class="compose-aside">
+      <div class="aside-photo">
+        <img src="assets/img/bubu-berry.png" alt="布布抱着一束草莓" />
+      </div>
+      <p class="aside-note">“想吃什么都告诉我，<br />我记性好得很。”</p>
+      <span class="aside-sign">—— 臭臭</span>
+    </aside>
+  </section>
+
+  <!-- ============ board ============ -->
+  <section class="board" id="board">
+    <header class="board-head">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-rule"></span>THE WISH WALL</p>
+        <h2>心愿墙</h2>
+      </div>
+      <div class="board-tools">
+        <label class="switch">
+          <input type="checkbox" id="hideDone" />
+          <span class="switch-ui" aria-hidden="true"></span>
+          只看没实现的
+        </label>
+        <button type="button" class="btn btn-soft btn-sm" id="randomBoard">随便抽一条</button>
+      </div>
+    </header>
+
+    <div class="tabs" id="tabs" role="tablist" aria-label="按类别筛选"></div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="empty" id="empty" hidden>
+      <img src="assets/img/snack.png" alt="一二正在吃辣条" />
+      <p class="empty-title" id="emptyTitle">这里还空着</p>
+      <p class="empty-sub" id="emptySub">写一条吧，臭臭在等呢。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <p class="foot-sign">香香 <span>♡</span> 臭臭</p>
+    <div class="foot-tools">
+      <button type="button" class="link-btn" id="exportBtn">导出备份</button>
+      <span class="foot-sep" aria-hidden="true">·</span>
+      <label class="link-btn" for="importInput">导入备份</label>
+      <input type="file" id="importInput" accept="application/json,.json" hidden />
+    </div>
+  </div>
+  <p class="foot-note">所有内容只保存在这台电脑的浏览器里（localStorage）。换电脑或清理浏览器之前，记得先导出备份。</p>
+  <p class="foot-credit">角色形象「一二 / 布布」版权归原作者 黄小B 所有。本页仅香香个人使用，不商用、不传播。</p>
+</footer>
+
+<!-- random dialog -->
+<dialog class="dialog" id="pickDialog" aria-labelledby="pickTitle">
+  <div class="dialog-art">
+    <img id="pickArt" src="assets/img/duo.png" alt="" />
+  </div>
+  <p class="dialog-kicker" id="pickCat">想让你做</p>
+  <h3 class="dialog-title" id="pickTitle">今天先做这一件吧</h3>
+  <p class="dialog-text" id="pickText"></p>
+  <div class="dialog-actions">
+    <button type="button" class="btn btn-soft btn-sm" id="pickAgain">再抽一条</button>
+    <button type="button" class="btn btn-primary btn-sm" id="pickClose">就它了</button>
+  </div>
+</dialog>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script src="assets/app.js?v=4"></script>
+</body>
+</html>
